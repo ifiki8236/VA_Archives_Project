@@ -1,11 +1,7 @@
 import os
 import base64
-# from flask import Flask
 from configurations import *
 
-# app = Flask(__name__)
-
-# @app.route('/')
 def grab_images():
     folder=r'images'
     image_extensions = ['.jpg', '.jpeg', '.png']

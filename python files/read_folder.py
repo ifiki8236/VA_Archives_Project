@@ -2,6 +2,9 @@ import os
 import base64
 from configurations import *
 
+class Archived_Image():
+    pass
+
 def grab_images():
     folder=r'images'
     image_extensions = ['.jpg', '.jpeg', '.png']
@@ -13,13 +16,15 @@ def grab_images():
         file_path = os.path.join(folder, fileName)
 
         with open(file_path,'rb') as image_data:
-            archived_photo = image_data.read()
-            base64_image = base64.b64encode(archived_photo).decode('utf-8')
-            send_archive(base64_image, fileName)
+            image_file = image_data.read()
+            base64_image = base64.b64encode(image_file).decode('utf-8')
+        # image_URL = convert_to_blob(file_path, f'archived_images/{fileName}')
+        send_archive(base64_image, fileName, 12, 2)
             
     return f'Images found: {(len(photograph))}'
 
 
 grab_images()
+print('done')
  # print(f'Image Added: {fileName}')
                 # # print(f'Base64 Data:\n{base64_image}')

@@ -3,7 +3,9 @@ import json
 import uuid
 
 # Set the path to your archives directory
-archives_path = "/path/to/archives"
+archives_path = r"E:\\Archives"
+database_path = './json files/archives_in_JSON.json'
+test_db = r'E:\\Test Folder'
 
 def get_images(box_path):
     # Get a list of all files in the box_path
@@ -31,22 +33,22 @@ def get_boxes(shelf_path):
             box_dict[box] = {"images": get_images(box_path)}
     return box_dict
 
-def get_shelves(archives_path):
-    # Get a list of all directories in the archives_path
-    shelves = os.listdir(archives_path)
+def get_shelves(test_db):
+    # Get a list of all directories in the test_db
+    shelves = os.listdir(test_db)
     
     # Create a dictionary to store shelf data
     shelf_dict = {}
     for shelf in shelves:
-        shelf_path = os.path.join(archives_path, shelf)
+        shelf_path = os.path.join(test_db, shelf)
         if os.path.isdir(shelf_path):
             # Get boxes for each shelf and store in the dictionary
             shelf_dict[shelf] = get_boxes(shelf_path)
     return shelf_dict
 
 # Generate the JSON structure
-archive_data = {"archives": get_shelves(archives_path)}
+archive_data = {"archives": get_shelves(test_db)}
 
 # Write the JSON structure to a file
-with open('archive_data.json', 'w') as json_file:
+with open(database_path, 'w') as json_file:
     json.dump(archive_data, json_file, indent=2)

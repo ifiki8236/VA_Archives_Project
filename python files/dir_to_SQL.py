@@ -15,7 +15,7 @@ def calculate_img_hash(path):
 
 def create_and_populate_db():
     # Connect to SQLite database (or create it)
-    conn = sqlite3.connect('./SQL  files/archive_in_SQL.db')
+    conn = sqlite3.connect('./SQL  files/VA_PHOTOS_ARCHIVE.db')
     cursor = conn.cursor()
 
     # Create tables
@@ -45,12 +45,12 @@ def create_and_populate_db():
 
     # Set path to archives directory
     archives_path = r"E:\\Archives"
-    test_db = r'E:\\Test Folder'
+    # archives_path = r'E:\\Test Folder'
     i=0
     
     # Insert data into tables
-    for shelf_name in os.listdir(test_db):
-        shelf_path = os.path.join(test_db, shelf_name)
+    for shelf_name in os.listdir(archives_path):
+        shelf_path = os.path.join(archives_path, shelf_name)
         if os.path.isdir(shelf_path):
             # Check if shelf already exists
             cursor.execute('SELECT id FROM Shelves WHERE name = ?', (shelf_name,))
@@ -92,6 +92,7 @@ def create_and_populate_db():
                             image_id = str(uuid.uuid4())
                             try:
                                 cursor.execute('INSERT INTO Images (id, box_id, hash,src, image_data) VALUES (?, ?, ?, ?, ?)', (image_id, box_id, image_hash, image_name, blob_data))
+                                print(f'Added {image_name}')
                             except sqlite3.Error as e:
                                 print(f'Database error: {e}')
                         else:

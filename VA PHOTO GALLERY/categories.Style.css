@@ -1,0 +1,12 @@
+#auto-gen-bttns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+button {
+    height: 40px;
+    width: 100px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

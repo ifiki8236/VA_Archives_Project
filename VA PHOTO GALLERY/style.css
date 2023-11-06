@@ -1,0 +1,135 @@
+@import url(./base.css);
+
+html {
+    height: 100%;
+}
+body {
+    overflow-x: hidden;
+    padding: 10px;
+}
+header {
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif;
+    border: solid white 2px;
+    border-radius: 5px;
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+ .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* This ensures the wrapper occupies at least the full viewport height */
+}
+main {
+    /* border: 2px blue solid; */
+    flex: 1;
+    padding: 10px;
+ }
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+}
+.gallery-item {
+    /* border: red 2px solid; */
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+}
+
+/* .gallery-image {
+    width: fit-content;
+    height: fit-content;
+} */
+
+.image-item img {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    transition: transform .1s;
+}
+
+.image-item img:hover {
+    transform: scale(1.1);
+    border: 3px solid rgb(128, 242, 255);
+    padding: 3px;
+    cursor: pointer;
+}
+
+ .loading-screen {
+    position: fixed;  /* or absolute, depending on your needs */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 255, 255, 0.9);  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;  /* ensure it's on top */
+}
+.footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    color: black;
+}
+.loaderName {
+    font-weight: bolder;
+}
+.spinner {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media screen and (min-width: 600px) {
+    .photo-gallery {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .image-item img:hover {
+        transform: scale(1.1);
+        border: 3px solid white;
+        padding: 0px;
+        cursor: pointer;
+    }
+    /* .image-item img:hover {
+        transform: scale(1.1);
+        border: 3px solid white;
+        padding: 1px;
+        cursor: pointer;
+    } */
+}
+
+@media screen and (min-width: 1000px) {
+    .photo-gallery {
+        grid-template-columns: repeat(3,1fr);
+    }
+    .image-item img:hover {
+        transform: scale(1.1);
+        border: 3px solid white;
+        padding: 0px;
+        cursor: pointer;
+    }
+}
+

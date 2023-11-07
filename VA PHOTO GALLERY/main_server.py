@@ -5,10 +5,6 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-# Secret key for encrypting the session (can be removed if session is not used)
-# app.config['SECRET_KEY'] = 'fufu2001'
-
-# Enable CORS without credentials since session is not used
 CORS(app)
 
 @app.route('/store_box_data', methods=['PUT'])

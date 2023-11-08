@@ -1,0 +1,38 @@
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.bg-page {
+    /* margin: auto; */
+    display: flex;
+    background-color: whitesmoke;
+    height: 82vh;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+}
+button {
+    width: 100px;
+    height: fit-content;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 2px 1px 10px ;
+    border: transparent;
+    font-weight: bolder;
+    padding: 5px;
+
+}
+button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: whitesmoke;
+}
+#back-bttn {
+    background-color: lightskyblue;
+    margin-bottom: 10px;
+    visibility:hidden;
+}
+.form-class {
+    border: solid black 2px;
+    height: 100px;
+    margin: auto;
+}

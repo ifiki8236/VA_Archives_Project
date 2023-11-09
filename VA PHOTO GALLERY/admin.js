@@ -1,55 +1,52 @@
-const addBox = document.getElementById('add-a-box');
-const uploadImg = document.getElementById('upload-imgs');
-const back = document.getElementById('back-bttn');
-const bgPage = document.querySelector('.bg-page');
+const addBox = document.getElementById('add-a-box')
+const uploadImg = document.getElementById('upload-imgs')
+const back = document.getElementById('back-bttn')
+const bgPage = document.querySelector('.bg-page')
+const uploadImgPage = document.getElementById('uploadImgPage')
+const boxCreationPage = document.getElementById('boxCreationPage')
+
 
 function switchPage() {
-    // Clear existing content
-    while (bgPage.firstChild) {
-        bgPage.removeChild(bgPage.firstChild);
-    }
-    back.style.visibility = 'visible';
+    back.style.visibility = 'visible'
+    addBox.style.display = 'none'
+    uploadImg.style.display = 'none'
 }
 
 function goBack() {
-    // Clear existing content
-    while (bgPage.firstChild) {
-        bgPage.removeChild(bgPage.firstChild);
-    }
-    back.style.visibility = 'hidden';
-    // Recreate and append the initial buttons
-    bgPage.appendChild(addBox);
-    bgPage.appendChild(uploadImg);
+    back.style.visibility = 'hidden'
+    boxCreationPage.style.display = 'none'
+    uploadImgPage.style.display = 'none'
+    addBox.style.display = 'flex'
+    uploadImg.style.display = 'flex'
 }
 
 function createAddBoxForm() {
-    const h2 = document.createElement('h2');
-    h2.textContent = 'Create a Box';
-    const boxFormDiv = document.createElement('div');
-    boxFormDiv.classList.add('form-class');
-    boxFormDiv.appendChild(h2);
-    // Add form elements here (input, label, button, etc.)
-    bgPage.appendChild(boxFormDiv);
+    boxCreationPage.style.display = 'flex'
 }
 
 function createUploadImagesForm() {
-    const h2 = document.createElement('h2');
-    h2.textContent = 'Upload Images';
-    const uploadFormDiv = document.createElement('div');
-    uploadFormDiv.classList.add('form-class');
-    uploadFormDiv.appendChild(h2);
-    // Add form elements here (input, label, button, etc.)
-    bgPage.appendChild(uploadFormDiv);
+    uploadImgPage.style.display = 'block'
 }
 
 addBox.addEventListener('click', function() {
-    switchPage();
-    createAddBoxForm();
-});
+    switchPage()
+    createAddBoxForm()
+})
 
 uploadImg.addEventListener('click', function() {
-    switchPage();
-    createUploadImagesForm();
-});
+    switchPage()
+    createUploadImagesForm()
+})
 
-back.addEventListener('click', goBack);
+back.addEventListener('click', goBack)
+
+const buttons = document.getElementsByTagName('button');
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function() {
+        console.log(`Button ${buttons[i]} clicked`);
+        buttons[i].style.backgroundColor = 'lightgray'
+        setTimeout(() => {
+            this.style.backgroundColor = ''; // Resets to original or you can set a specific color
+        }, 125);
+    });
+}

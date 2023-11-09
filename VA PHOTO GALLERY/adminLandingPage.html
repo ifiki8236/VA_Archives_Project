@@ -18,7 +18,28 @@
         <div class="bg-page">
             <button id="add-a-box">Create Box</button>
             <button id="upload-imgs">Upload Images</button>
-            
+            <div id="boxCreationPage">
+                <div class="makeBox">
+                    <label for="box-number">Box/Container Number</label>
+                    <input id="box-number" type="number">
+                </div>
+                <!-- <div class="makeBox">
+                    <label for="box-title">Category Title</label> <br>
+                    <input id="box-title" type="text">
+                </div> -->
+                
+                <button class="submit">Create Entry</button>
+            </div>
+            <div id="uploadImgPage">
+                <div class="choose-file">
+                    <label for="img-upload">Upload</label>
+                    <input id="img-upload" type="file" multiple>
+                </div>
+                
+                <button class="submit">Create Entry</button>
+                <!-- <div id="image-count">No images selected.</div> -->
+            </div>
+
         </div>
     </main>
     <script src="admin.js"></script>

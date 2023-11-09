@@ -1,7 +1,7 @@
 const loadImages = (boxID) => {
     const loadedImages = [];
     const globalLoadingScreen = document.getElementById('globalLoadingScreen');
-    // const footerText = document.getElementById('footerText');
+    const footerText = document.getElementById('footerText');
     // Fetch all images from the server
     fetch(`http://127.0.0.1:5000/retrieve_images/${boxID}`, {
         // credentials: 'include'  // Include credentials with the request
@@ -25,12 +25,12 @@ const loadImages = (boxID) => {
             document.querySelector('.photo-gallery').appendChild(imageDiv);
         });
         globalLoadingScreen.style.display = 'none';  // Hide the loading screen after fetching
-        // footerText.textContent = "";
+        footerText.textContent = "";
     })
     .catch(error => {
         console.error('Fetch error:', error);
         globalLoadingScreen.style.display = 'none';  // Hide the loading screen after fetching
-        // footerText.textContent = "Error loading content, refresh required...";
+        footerText.textContent = "Error loading content, refresh required...";
     });
 };
 document.addEventListener('DOMContentLoaded', () => {

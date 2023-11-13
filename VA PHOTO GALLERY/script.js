@@ -2,10 +2,9 @@ const loadImages = (boxID) => {
     const loadedImages = [];
     const globalLoadingScreen = document.getElementById('globalLoadingScreen');
     const footerText = document.getElementById('footerText');
-    // Fetch all images from the server
-    fetch(`http://127.0.0.1:5000/retrieve_images/${boxID}`, {
-        // credentials: 'include'  // Include credentials with the request
-    })
+    let loadedCount = 0; // Counter for loaded images
+
+    fetch(`http://127.0.0.1:5000/retrieve_images/${boxID}`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -14,18 +13,32 @@ const loadImages = (boxID) => {
         return response.json();
     })
     .then(data => {
+        const totalCount = data.length; // Total number of images to load
+        console.log(totalCount)
+        // footerText.textContent = `Loading images... 0/${totalCount}`;
+
         data.forEach(image => {
             loadedImages.push(image);
+            loadedCount++;
+            console.log(image.id, loadedCount)
             const imageDiv = document.createElement('div');
             imageDiv.classList.add('image-item');
             const imgElement = document.createElement('img');
             imgElement.src = 'data:image/jpeg;base64,' + image.photo_data;
             imgElement.alt = 'Image ' + image.id;
+            imgElement.onload = () => {
+                footerText.textContent = `Loading images... ${loadedCount}/${totalCount}`;
+                if (loadedCount === totalCount) {
+                    globalLoadingScreen.style.display = 'none'; // Hide loading screen after all images are loaded
+                    footerText.textContent = `Images loaded - ${loadedCount}/${totalCount}`;
+                }
+            };
+            imgElement.onerror = () => {
+                footerText.textContent = 'Error loading some images';
+            };
             imageDiv.appendChild(imgElement);
             document.querySelector('.photo-gallery').appendChild(imageDiv);
         });
-        globalLoadingScreen.style.display = 'none';  // Hide the loading screen after fetching
-        footerText.textContent = "";
     })
     .catch(error => {
         console.error('Fetch error:', error);
@@ -46,4 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('No boxID provided in URL.');
     }
 });
+
 

@@ -13,7 +13,10 @@
     <header>
         <h1>Gallery</h1>
     </header>    
+    <button id="back-bttn" onclick="goBack()">Go Back</button>
+
     <main class="photo-gallery">
+
         <div class="loading-screen" id="globalLoadingScreen">
             <!-- <h2 class="loaderName">Loading...</h2> <br> -->
             <div class="spinner"></div>
@@ -24,13 +27,15 @@
             <!-- </div> -->
         <!-- </div> -->
     </main>
-    <!-- <footer class="footer">
+    <footer class="footer">
             <p id="footerText"></p>
-    </footer> -->
+    </footer>
 </div>
-
-<!-- <script type="module" src="make_buttons.js"></script> -->
 <script type="module" src="script.js"></script>
-
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
 </body>
 </html>

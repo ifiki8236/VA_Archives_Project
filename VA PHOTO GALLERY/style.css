@@ -5,7 +5,7 @@ html {
 }
 body {
     overflow-x: hidden;
-    padding: 5px;
+    padding: 10px;
 }
 header {
     text-align: center;
@@ -20,7 +20,22 @@ header {
     margin-bottom: 10px;
 
 }
-
+button {
+    width: 100px;
+    height: fit-content;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 2px 1px 10px ;
+    border: transparent;
+    font-weight: bolder;
+    padding: 5px;
+    flex-direction: column; /* Ensure columnar layout */
+    align-items: center;
+    justify-content: center;
+}
+button.submit {
+    margin-top: 20px;
+}
  .page-wrapper {
     display: flex;
     flex-direction: column;

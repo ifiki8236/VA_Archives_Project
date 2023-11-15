@@ -25,7 +25,11 @@ def get_boxes():
 def get_images(boxID):
     # You may want to receive some identifier or parameters from request.args
     try:
-        returned_images = db_pull(boxID)
+        page = int(request.args.get('page', 1))
+        page_size = int(request.args.get('page_size', 10))
+
+        # Adjust this function to support pagination
+        returned_images = db_pull(boxID, page, page_size)
         if returned_images is None:
             app.logger.warning('No images returned from db_pull')
             return jsonify({'error': 'No images returned'}), 404

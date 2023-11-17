@@ -1,7 +1,7 @@
 let currentPage = 1;
 let allImagesLoaded = false;
 let totalCount = 0;
-const pageSize = 10; // Assuming 10 images per page
+const pageSize = 12; // Assuming 10 images per page
 let isLoading = false; // New flag to track loading state
 
 

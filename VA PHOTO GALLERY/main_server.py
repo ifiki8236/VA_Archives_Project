@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from pull_images import db_pull
 from pull_boxes import boxes_pull
 from flask_cors import CORS
-
+from pull_shelves import getShelves
 app = Flask(__name__)
 
 CORS(app)
@@ -26,7 +26,7 @@ def get_images(boxID):
     # You may want to receive some identifier or parameters from request.args
     try:
         page = int(request.args.get('page', 1))
-        page_size = int(request.args.get('page_size', 10))
+        page_size = int(request.args.get('size', 10))
 
         # Adjust this function to support pagination
         returned_images = db_pull(boxID, page, page_size)
@@ -39,15 +39,14 @@ def get_images(boxID):
     except Exception as e:
         app.logger.error('Error on server: %s', str(e))
         return jsonify({'error': 'Internal Server Error'}), 500
-
-# @app.before_request
-# def before_request_logging():
-#     app.logger.debug("Before request: %s %s", request.method, request.url)
-
-# @app.after_request
-# def after_request_logging(response):
-#     app.logger.debug("After request: %s %s", request.method, request.url)
-#     return response
-
+    
+@app.route('/retrieve_shelves', methods=['GET'])
+def get_shelves():
+    try:
+        data = getShelves()
+        return jsonify(data)
+    except Exception as e:
+        app.logger.error('Error: %s', str(e))
+        return jsonify({'error': 'Internal Server Error'}), 500
 if __name__ == '__main__':
     app.run(debug=True)

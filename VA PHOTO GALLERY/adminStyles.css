@@ -15,7 +15,7 @@ body {
 main {
     color: black;
 }
-label {
+h3 {
     margin-bottom: 20px;
     border-bottom: solid darkslategray 2px;
 }
@@ -68,6 +68,7 @@ h2 {
     align-items: center;
     justify-content: center;
     width: fit-content;
+    margin: auto;
 }
 
 #uploadImgPage {
@@ -79,13 +80,20 @@ h2 {
     margin: auto; /* Centers the uploadImgPage in the parent container */
 }
 
-.choose-file {
+.upload-file-sections {
     display: flex; /* Ensuring choose-file is also a flex container */
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2rem;
 }
-
+.makeBox {
+    display: flex; /* Ensuring choose-file is also a flex container */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
 #img-upload {
     width: 200px;
     margin-bottom: 10px; /* Adds space below the upload button */

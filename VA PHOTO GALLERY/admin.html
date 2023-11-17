@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VA Archives Project</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./adminStyles.css">
+        <!-- <link rel="stylesheet" href="./base.css"> -->
+    </head>
+<body>
+    <header>
+        <h1>Admin Portal</h1>
+    </header>    
+    <main>
+        <button id="back-bttn">Go Back</button>
+
+        <div class="bg-page">
+            <button id="add-a-box">Create Box</button>
+            <button id="upload-imgs">Upload Images</button>
+            <div id="boxCreationPage">
+                <div class="makeBox">
+                    <h3 for="box-number">Box/Container Number</h3>
+                    <input id="box-number" type="number">
+                </div>  
+                <div class="makeBox">
+                    <h3 for="box-number">Parent Shelf</h3>
+                    <select name="shelf_select" id="shelf_select">
+                        <option value="">*Empty*</option>
+                    </select>
+                </div>                
+                <button class="submit" id="make-box">Create Entry</button>
+            </div>
+            <div id="uploadImgPage">
+                <div class="upload-file-sections">
+                    <h3 for="box-select">Choose Parent Box</h3>
+                    <select name="box-select" id="box-select">
+                        <option value="">*Empty*</option>
+                        
+                    </select>
+                </div>
+                <div class="upload-file-sections">
+                    <h3 for="img-upload">Upload</h3>
+                    <input id="img-upload" type="file" accept=".jpg, .jpeg" multiple>
+                </div>
+                <button class="submit" id="put-images">Create Entry</button>
+                <!-- <div id="image-count">No images selected.</div> -->
+            </div>
+        </div>
+    </main>
+    <script src="admin.js"></script>
+    <script src="getShelves.js"></script>
+    <script src="getBoxes.js"></script>
+</body>
+</html>

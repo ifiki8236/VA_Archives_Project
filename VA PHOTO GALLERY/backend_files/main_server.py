@@ -3,18 +3,36 @@ from pull_images import db_pull
 from pull_boxes import boxes_pull
 from flask_cors import CORS
 from pull_shelves import getShelves
-app = Flask(__name__)
 
+app = Flask(__name__)
 CORS(app)
 
+# PUT methods
 @app.route('/store_box_data', methods=['PUT'])
 def store_box_data():
     # Directly return the data back to the client
-    data = request.get_json()
-    app.logger.info('Data received: %s', data)
-    # You might want to implement some logic here to handle the data
-    return jsonify(success=True)
+    try:
+        data = request.get_json()
+        app.logger.info('Data received: %s', data)
+        # You might want to implement some logic here to handle the data
+        return jsonify(success=True)
+    except Exception as e:
+        print('Error', e)
+        return jsonify(success=False)
+    
+@app.route('/add_images', methods=['PUT'])
+def put_images():
+    try:
+        data = request.get_json()
+        app.logger.info('Data received: %s', data)
+        # You might want to implement some logic here to handle the data
+        return jsonify(success=True)
+    except Exception as e:
+        print('Error with images :', e)
+        return jsonify(success=False)
 
+
+# GET methods
 @app.route('/retrieve_boxes', methods=['GET'])
 def get_boxes():
     data = boxes_pull()
@@ -48,5 +66,7 @@ def get_shelves():
     except Exception as e:
         app.logger.error('Error: %s', str(e))
         return jsonify({'error': 'Internal Server Error'}), 500
+    
+# Start Server
 if __name__ == '__main__':
     app.run(debug=True)

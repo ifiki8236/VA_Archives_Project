@@ -1,4 +1,6 @@
 const box_select = document.getElementById('box-select')
+const put_images = document.getElementById('put-images')
+const fileInput = document.getElementById('img-upload')
 
 document.addEventListener('DOMContentLoaded', function() {
     // Select the input element
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setBoxes(boxes) {
-    console.log(boxes)
+    // console.log(boxes)
     boxes.forEach(dataValue => {
         // Create a new option element
         const option = document.createElement('option')
@@ -46,9 +48,13 @@ function setBoxes(boxes) {
         box_select.appendChild(option);
     })
 }
-// function grabNames(data) {
-//     let nameArray = []
-//     for (let i = 0; i<data.length;i++)
-//         nameArray.push(data[i][1])
-//     return nameArray
-// }
+// document.getElementById('put-images').addEventListener('click', () => {
+//     const theBox = box_select.value;
+//     console.log('Selected Box:', theBox);
+
+//     // const files = fileInput.files;
+//     //     console.log('Uploaded files:');
+//     //     for (let i = 0; i < files.length; i++) {
+//     //         console.log(files[i]);
+//     // }
+// })

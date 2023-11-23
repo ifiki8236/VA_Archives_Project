@@ -4,10 +4,8 @@ const back = document.getElementById('back-bttn')
 const bgPage = document.querySelector('.bg-page')
 const uploadImgPage = document.getElementById('uploadImgPage')
 const boxCreationPage = document.getElementById('boxCreationPage')
-const put_images_bttn = document.getElementById('put-images')
-const make_box_bttn = document.getElementById('make-box')
-const select = document.getElementById('box-select')
-const fileInput = document.getElementById('img-upload')
+// const select_create_box = document.getElementById('box-select')
+// const select_upload_images = document.getElementById('shelf_select')
 
 
 function switchPage() {
@@ -54,16 +52,4 @@ for (let i = 0; i < buttons.length; i++) {
         }, 125);
     });
 }
-make_box_bttn.addEventListener('click', () => {
-    
-})
-put_images_bttn.addEventListener('click', () => {
-    const selectedBox = select.value;
-    console.log('Selected Box:', selectedBox);
 
-    const files = fileInput.files;
-        console.log('Uploaded files:');
-        for (let i = 0; i < files.length; i++) {
-            console.log(files[i].name);
-    }
-})

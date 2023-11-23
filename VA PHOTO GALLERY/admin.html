@@ -18,24 +18,26 @@
         <div class="bg-page">
             <button id="add-a-box">Create Box</button>
             <button id="upload-imgs">Upload Images</button>
+            <!--MAKE BOXES PAGE-->
             <div id="boxCreationPage">
                 <div class="makeBox">
                     <h3 for="box-number">Box/Container Number</h3>
                     <input id="box-number" type="number">
                 </div>  
                 <div class="makeBox">
-                    <h3 for="box-number">Parent Shelf</h3>
+                    <h3 for="shelf_select">Parent Shelf</h3>
                     <select name="shelf_select" id="shelf_select">
-                        <option value="">*Empty*</option>
+                        <option value="">*Choose Shelf*</option>
                     </select>
                 </div>                
                 <button class="submit" id="make-box">Create Entry</button>
             </div>
+            <!--IMAGE UPLOAD PAGE-->
             <div id="uploadImgPage">
                 <div class="upload-file-sections">
                     <h3 for="box-select">Choose Parent Box</h3>
                     <select name="box-select" id="box-select">
-                        <option value="">*Empty*</option>
+                        <option value="">*Choose Box*</option>
                         
                     </select>
                 </div>
@@ -48,8 +50,10 @@
             </div>
         </div>
     </main>
-    <script src="admin.js"></script>
-    <script src="getShelves.js"></script>
-    <script src="getBoxes.js"></script>
+    <script src="./javascript _files/admin.js"></script>
+    <script src="javascript _files/getShelves.js"></script>
+    <script src="javascript _files/getBoxes.js"></script>
+    <script src="javascript _files/makeBoxes.js"></script>
+    <script src="javascript _files/pushImages.js"></script>
 </body>
 </html>

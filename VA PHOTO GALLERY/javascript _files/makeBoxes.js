@@ -12,7 +12,7 @@ bttn.addEventListener('click', function() {
         }
     
         // Make the fetch request to the server
-        fetch('http://127.0.0.1:5000/store_box_data', {
+        fetch('http://127.0.0.1:5000/make_box', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,9 +27,15 @@ bttn.addEventListener('click', function() {
             return response.json();
         })
         .then(data => {
-            console.log('Success:', data);
-            alert(`Archival Box ${boxNum} created!`)
-            clearInput()
+            // console.log('Success:', data);
+            // console.log(data[0])
+            if(data[0] == true) {
+                alert(`Archival Box ${boxNum} created!`)
+                clearInput()
+            }
+            else {
+                alert(data[1])
+            }
         })
         .catch(error => {
             console.error('Fetch error:', error);

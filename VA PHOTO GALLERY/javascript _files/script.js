@@ -32,7 +32,7 @@ const loadImages = (boxID,currentPage) => {
         totalCount += pulledCount
         console.log('Current Page :',currentPage)
         // footerText.textContent = `Loading images... 0/${totalCount}`;
-
+        
         data.forEach(image => {
             loadedImages.push(image);
             loadedCount++;
@@ -40,7 +40,8 @@ const loadImages = (boxID,currentPage) => {
             const imageDiv = document.createElement('div');
             imageDiv.classList.add('image-item');
             const imgElement = document.createElement('img');
-            imgElement.src = 'data:image/jpeg;base64,' + image.photo_data;
+            // imgElement.src = 'data:image/jpeg;base64,' + image.photo_data;
+            imgElement.src = `data:${image.type};base64,${image.photo_data}`;
             imgElement.alt = 'Image ' + image.id;
             imgElement.onload = () => {
                 // footerText.textContent = `Loading images... ${loadedCount}/${totalCount}`;

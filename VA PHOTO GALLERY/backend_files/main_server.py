@@ -3,19 +3,23 @@ from pull_images import db_pull
 from pull_boxes import boxes_pull
 from flask_cors import CORS
 from pull_shelves import getShelves
+from setImages import extractData
+from addBox import addBoxToShelf
 
 app = Flask(__name__)
 CORS(app)
 
 # PUT methods
-@app.route('/store_box_data', methods=['PUT'])
+@app.route('/make_box', methods=['PUT'])
 def store_box_data():
     # Directly return the data back to the client
     try:
         data = request.get_json()
         app.logger.info('Data received: %s', data)
+        response = addBoxToShelf(data['boxNum'],data['shelfData'])
+        # print(data['boxNum'])
         # You might want to implement some logic here to handle the data
-        return jsonify(success=True)
+        return jsonify(response)
     except Exception as e:
         print('Error', e)
         return jsonify(success=False)
@@ -24,12 +28,13 @@ def store_box_data():
 def put_images():
     try:
         data = request.get_json()
-        app.logger.info('Data received: %s', data)
+        img = extractData(data)
+        app.logger.info('Data received: %s', img)
         # You might want to implement some logic here to handle the data
         return jsonify(success=True)
     except Exception as e:
         print('Error with images :', e)
-        return jsonify(success=False)
+        return jsonify(success=False), 500
 
 
 # GET methods

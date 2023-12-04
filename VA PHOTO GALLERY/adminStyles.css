@@ -35,18 +35,18 @@ button {
     align-items: center;
     justify-content: center;
 }
+
 button.submit {
     margin-top: 20px;
 }
+
 input#box-title {
     width: 300px;
 }
-/* button:hover {
-    cursor: pointer;
-    background-color: black;
-    color: whitesmoke;
-} */
 
+option {
+    font-size: 16px;
+}
 #back-bttn {
     background-color: lightskyblue;
     margin-bottom: 10px;

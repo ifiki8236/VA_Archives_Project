@@ -10,13 +10,18 @@ button.addEventListener('click', function() {
         const reader = new FileReader();
         const imagePromise = new Promise((resolve, reject) => {
             reader.onload = function(event) {
-                resolve(event.target.result);
+                // Resolve with an object containing both name and Base64 data
+                resolve({
+                    name: imageData[i].name,
+                    data: event.target.result
+                });
             };
             reader.onerror = reject;
             reader.readAsDataURL(imageData[i]);
         });
         imagePromises.push(imagePromise);
     }
+    
 
     // Once all images are converted
     Promise.all(imagePromises).then(base64Images => {
